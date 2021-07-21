@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Daily Laugh</title>
 </head>
 <body>
+
+<div class="joke-criteria">
+
+    <select id="joke-category">
+            <option id="programming">Programming</option>
+            <option id="pun">Pun</option>
+            <option id="dark">Dark</option>
+            <option id="chuck-norris">Chuck Norris</option>
+    </select>
+
+<form id="criteria-form">      
+    <fieldset>      
+        <legend>Select Criteria:</legend>      
+        <input type="checkbox" id="nsfw">nsfw<br>      
+        <input type="checkbox" id="explicit">explicit<br>      
+        <input type="checkbox" id="political">political<br>      
+        <br>      
+        <input id="submit-criteria-button" type="submit" value="Submit now" />      
+    </fieldset>      
+</form>
+</div>
+
     <div class="container">
         <p id="setup"></p>
         <p id="delivery"></p>
     </div>
+
 
 <script src="script-test.js"></script>
 </body>
