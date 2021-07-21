@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header { /*main heading */
+    background-color: #00008B;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#column1 { /*stores search button, check boxes for joke criteria/genre */
+    float: left;  
+    width: 25%;
+    padding: 10px;
+    height: 550px;
+    margin: 25px;
+    border: 2px solid #000000;
+  }
+
+  button { /*changes the appearance of the button */
+    background-color: #00008B;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 140px;
+    padding-right: 140px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+#history {
+    color: #808080;
+    text-align: center;
+    border: 2px solid #DCDCDC;
+    margin: 10px;
+    height: 125px;
+    border-radius: 5px;
+
+}
+
+#subheading {
+    margin: 25px;
+}
+
+.checkboxes {
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+#joke1, #joke2, #joke3, #joke4, #joke5 {
+    margin: 15px;
+}
+
+  #column2 {
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOW2aJpGuWW8nPlxO9dpwm9zVDPClAGXVTtA&usqp=CAU");
+    float: right;
+    width: 65%;
+    height: 550px;
+    padding: 10px;
+    margin-right: 25px;
+    margin-top: 25px;
+    border: 2px solid #000000;
+  }
+
+  #insert-joke {
+    margin: 250px;
+    height: 50px;
+    border: 2px solid #000000;
+    background-color: #000000;
+    color:white;
+    align-items: baseline;
+    text-align: center;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
