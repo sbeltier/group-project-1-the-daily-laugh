@@ -9,6 +9,15 @@ $("#myForm").submit(function(event){
         url:url,
         success:function(data){
             console.log(data)
+
+            data.results.forEach(photo =>{
+                $("#result").append(`
+                
+                <img src="${photo.urls.regular}"/>
+                
+                `)
+            })
+            
         }
     })
 })
