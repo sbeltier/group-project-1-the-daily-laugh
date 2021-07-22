@@ -29,19 +29,19 @@
     </div>
     <div>  <!--individual checkboxes 1-5-->
         <form id="checkboxes" action="/action_page.php">
-            <input type="checkbox" id="joke1" name="dad-jokes" value="dad">
+            <input type="radio" id="joke1" name="category" value="dad">
             <label for="dad-jokes">Dad Jokes</label><br>
     
-            <input type="checkbox" id="joke2" name="chuck-norris" value="chuck">
+            <input type="radio" id="joke2" name="category" value="chuck">
             <label for="chuck-norris">Chuck Norris</label><br>
     
-            <input type="checkbox" id="joke3" name="misc" value="misc">
+            <input type="radio" id="joke3" name="category" value="misc">
             <label for="misc">Random</label><br>
 
-            <input type="checkbox" id="joke4" name="pun" value="pun">
+            <input type="radio" id="joke4" name="category" value="pun">
             <label for="pun">Pun</label><br>
 
-            <input type="checkbox" id="joke5" name="geek" value="geek">
+            <input type="radio" id="joke5" name="category" value="geek">
             <label for="geek">Geek</label><br>
           </form>
     </div>
@@ -49,9 +49,11 @@
 
   <!--change below code to Tailwind framework-->
   <div id="column2" class="border rounded-md"> <!--contains everything inside the right side box (joke & background image)-->
-    <h3 id="insert-joke" class="border-black border rounded-md text-white bg-black bg-opacity-50">
+    <div style="overflow: auto">
+      <h3 id="insert-joke" class="border-black border rounded-md text-white bg-black bg-opacity-50">
       Joke Goes Here
-    </h3>
+      </h3>
+    </div>
   </div>
 </div>
 <!-- Scripts -->

@@ -17,7 +17,7 @@ var geekURL = "https://geek-jokes.sameerkumar.website/api?format=json";
 searchButton.click(function () {
  
     // Condition: only if Joke2API is selected
-   if ($('#joke3').is(':checked') || $('#joke4').is(':checked')){
+   if ($("#joke3 input[type='radio']:checked") || $("#joke4 input[type='radio']:checked")) {
        
     // Grab user input from options and add to queryURL
         var joke2api_url = "https://v2.jokeapi.dev/joke/"
@@ -31,7 +31,7 @@ searchButton.click(function () {
     }
 
     // Condition: only if Geek Joke is selected
-    if ($('#joke5').is(':checked')) {
+    if ($("#joke5 input[type='radio']:checked")) {
         geekAjax();
     }
 
