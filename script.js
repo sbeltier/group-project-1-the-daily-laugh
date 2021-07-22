@@ -11,13 +11,15 @@ var jokeStorage_arr = [];
         }
     }
     */
+var geekURL = "https://geek-jokes.sameerkumar.website/api?format=json";
 
 // Add Event to Search Button
 searchButton.click(function () {
  
     // Condition: only if Joke2API is selected
-   if ($('#joke3 option:selected') || $('#joke4 option:selected')){
-        // Grab user input from options and add to queryURL
+   if ($('#joke3').is(':checked') || $('#joke4').is(':checked')){
+       
+    // Grab user input from options and add to queryURL
         var joke2api_url = "https://v2.jokeapi.dev/joke/"
         var selected_option_jokeCategory = $( "input[type=checkbox]:checked" ).val();
         console.log("Joke category selected is:")
@@ -26,6 +28,11 @@ searchButton.click(function () {
 
         // Get Joke Functions
         getJoke2Api(joke2api_url);
+    }
+
+    // Condition: only if Geek Joke is selected
+    if ($('#joke5').is(':checked')) {
+        geekAjax();
     }
 
 })
@@ -79,5 +86,30 @@ function getJoke2Api (joke2api_url){
             console.log(jokeStorage_arr)
         }
         
+    })
+}
+
+// Get a joke from Geek-jokes
+
+function geekAjax() {
+    $.ajax({
+        url: geekURL,
+        method: 'GET',
+    })
+    .then(function (response) {
+        if (response.joke.toLowerCase().indexOf('chuck norris') > -1) {
+            console.log("chuck norris joke!")
+            console.log(response.joke)
+            geekAjax();
+            }
+        else {
+            jokeHere.html(response.joke);
+            console.log("not a chuck norris joke")
+            console.log(response.joke)
+            var newJoke = {
+                GeekJoke: response.joke
+            }
+            jokeStorage_arr.push(newJoke)
+        }
     })
 }
