@@ -5,25 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheDayLeeLaugh</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">    
     <link rel="stylesheet" href="style.css"/>
 
 </head>
-<body>
-    <header class="header">
+<body class="bg-blue-200">
+    <header id="header"> <!--header-->
         The DayLee Laugh 
     </header>
 
-<div class="row">
-  <div id="column1">
-    <button type="submit" id="search-btn">Search</button>
+<div>
+  <div id="column1" class="border rounded-md"> <!--contains everything inside left side box (button, history, checkboxes)-->
+    <button type="submit" id="search-btn">Search</button> <!--button-->
     <div>
-        <h5 id="history">History</h5>
+        <h5 id="history">History</h5> <!--subheading inside the search history box-->
     </div>
     <div> 
-        <h3 id="subheading">What types of jokes are you feeling today?</h3>
+        <h3 id="subheading">What types of jokes are you feeling today?</h3> <!--subheading-->
     </div>
-    <div>
-        <form class="checkboxes" action="/action_page.php">
+    <div>  <!--individual checkboxes 1-5-->
+        <form id="checkboxes" action="/action_page.php">
             <input type="checkbox" id="joke1" name="dad-jokes" value="dad">
             <label for="dad-jokes"> Dad Jokes</label><br>
     
@@ -31,25 +32,24 @@
             <label for="chuck-norris"> Chuck Norris</label><br>
     
             <input type="checkbox" id="joke3" name="joke3" value="joke">
-            <label for="joke3"> joke</label><br><br>
+            <label for="joke3"> joke</label><br>
 
             <input type="checkbox" id="joke4" name="joke4" value="joke">
-            <label for="joke4"> joke</label><br><br>
+            <label for="joke4"> joke</label><br>
 
             <input type="checkbox" id="joke5" name="joke5" value="joke">
-            <label for="joke5"> joke</label><br><br>
+            <label for="joke5"> joke</label><br>
           </form>
     </div>
   </div>
 
-  <div id="column2">
-    <h3 id="insert-joke">Joke Goes Here</h3>
+  <!--change below code to Tailwind framework-->
+  <div id="column2" class="border rounded-md"> <!--contains everything inside the right side box (joke & background image)-->
+    <h3 id="insert-joke" class="border-black border rounded-md text-white bg-black bg-opacity-50">
+      Joke Goes Here
+    </h3>
   </div>
 </div>
-
-
-
-
 
 </body>
 </html>

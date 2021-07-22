@@ -1,10 +1,12 @@
+
+
 * {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.header { /*main heading */
-    background-color: #00008B;
+#header { /*main heading*/
+    background-color: #7F58AF;
     color: white;
     text-align: center;
     font-size: 50px;
@@ -12,7 +14,7 @@
     padding-bottom: 15px;
 }
 
-#column1 { /*stores search button, check boxes for joke criteria/genre */
+#column1 { /*LEFT BOX CONTAINING search button, search history, and check boxes for joke criteria/genre*/
     float: left;  
     width: 25%;
     padding: 10px;
@@ -21,19 +23,19 @@
     border: 2px solid #000000;
   }
 
-  button { /*changes the appearance of the button */
+  #search-btn { /*changes the appearance of the button*/
     background-color: #00008B;
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 140px;
-    padding-right: 140px;
+    padding-left: 145px;
+    padding-right: 145px;
     border-radius: 5px;
     margin-top: 10px;
-    margin-left: 25px;
+    margin-left: 10px;
 }
 
-#history {
+#history { /*search history box*/
     color: #808080;
     text-align: center;
     border: 2px solid #DCDCDC;
@@ -43,21 +45,22 @@
 
 }
 
-#subheading {
+#subheading { /*SUBHEADING INSIDE search history box*/
     margin: 25px;
+    font-weight: bold;
 }
 
-.checkboxes {
-    margin-top: 25px;
-    margin-left: 25px;
+#checkboxes { /*contains ALL checkboxes*/
+    margin: 25px;
+    
 }
 
-#joke1, #joke2, #joke3, #joke4, #joke5 {
+#joke1, #joke2, #joke3, #joke4, #joke5 { /*INDIVIDUAL checkboxes*/
     margin: 15px;
 }
 
-  #column2 {
-      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOW2aJpGuWW8nPlxO9dpwm9zVDPClAGXVTtA&usqp=CAU");
+#column2 { /*RIGHT BOX CONTAINING joke image and joke | will change to tailwind framework*/
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOW2aJpGuWW8nPlxO9dpwm9zVDPClAGXVTtA&usqp=CAU");
     float: right;
     width: 65%;
     height: 550px;
@@ -67,19 +70,9 @@
     border: 2px solid #000000;
   }
 
-  #insert-joke {
+  #insert-joke { /*box where actual joke will be displayed | will change to tailwind framework*/
     margin: 250px;
     height: 50px;
-    border: 2px solid #000000;
-    background-color: #000000;
-    color:white;
-    align-items: baseline;
     text-align: center;
   }
   
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
