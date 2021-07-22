@@ -62,6 +62,9 @@ function getJoke2Api (joke2api_url){
             jokeStorage_arr.push(newJoke)
             console.log("Jokes stored:")
             console.log(jokeStorage_arr)
+            
+            // Set Local Storage
+            localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))            
         }
 
         // if two line joke
@@ -84,6 +87,9 @@ function getJoke2Api (joke2api_url){
             jokeStorage_arr.push(newJoke)
             console.log("Jokes stored:")
             console.log(jokeStorage_arr)
+
+            // Set Local Storage
+            localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))            
         }
         
     })
@@ -109,7 +115,11 @@ function geekAjax() {
             var newJoke = {
                 GeekJoke: response.joke
             }
+            // Push to jokeStorage_arr
             jokeStorage_arr.push(newJoke)
+
+            // Set Local Storage
+            localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))
         }
     })
 }
