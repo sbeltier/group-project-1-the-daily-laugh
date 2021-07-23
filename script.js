@@ -35,6 +35,13 @@ searchButton.click(function () {
         geekAjax();
     }
 
+    // Condition: only if Dad Joke is selected
+    if ($("#joke1 input[type='radio']:checked")) {
+        dadJokeAjax();
+    }
+
+    // Need call for manatee function
+
 })
 
 // Get a joke from Joke2API
@@ -108,6 +115,16 @@ function geekAjax() {
             console.log(response.joke)
             geekAjax();
             }
+        else if (response.joke.toLowerCase().indexOf('chuck') > -1) {
+            console.log("chuck norris joke!")
+            console.log(response.joke)
+            geekAjax();
+            }
+        else if (response.joke.toLowerCase().indexOf('norris') > -1) {
+            console.log("chuck norris joke!")
+            console.log(response.joke)
+            geekAjax();
+            }
         else {
             jokeHere.html(response.joke);
             console.log("not a chuck norris joke")
@@ -123,3 +140,77 @@ function geekAjax() {
         }
     })
 }
+
+// Get a joke from dad-jokes
+var dadJokeURL = "https://dad-jokes.p.rapidapi.com/random/joke/png";
+var dadJokeKey = "74f08a0113msha07df561725aea0p1786ebjsndfeb58ea0cc2"
+var dadJokeHost = "dad-jokes.p.rapidapi.com"
+
+function dadJokeAjax() {
+    $.ajax({
+        url: dadJokeURL,
+        method: 'GET',
+        headers: {
+            "x-rapidapi-key": dadJokeKey,
+		    "x-rapidapi-host": dadJokeHost,
+        }})
+    .then(function (response) {
+        console.log(response.body.setup);
+        console.log(response.body.punchline);
+        console.log(typeof response.body.setup);
+
+        // Add joke to page
+        jokeHere.html(response.body.setup + " " + response.body.punchline)
+        
+        // Push to jokeStorage_arr
+        var newJoke = {
+            dadJoke: {
+                joke: response.body.setup,
+                punchline: response.body.punchline,
+            }
+        }
+        jokeStorage_arr.push(newJoke)
+        console.log("Jokes stored:")
+        console.log(jokeStorage_arr)
+
+        // Set Local Storage
+        localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))
+    });
+}
+
+// Get a joke from manatee-jokes
+var manateeURL = "https://manatee-jokes.p.rapidapi.com/manatees/random/"
+var manateeKey = "74f08a0113msha07df561725aea0p1786ebjsndfeb58ea0cc2"
+var manateeHost = "manatee-jokes.p.rapidapi.com"
+
+function manateeAjax() {
+    $.ajax({
+        url: manateeURL,
+        method: 'GET',
+        headers: {
+            "x-rapidapi-key": manateeKey,
+            "x-rapidapi-host": manateeHost,
+      }}).then(function (response) {
+        console.log(response.setup);
+        console.log(response.punchline);
+        console.log(typeof response.setup);
+
+        // Add joke to page
+        jokeHere.html(response.setup + " " + response.punchline)
+
+        // Push to jokeStorage_arr
+        var newJoke = {
+            manateeJoke: {
+                joke: response.setup,
+                punchline: response.punchline,
+            }
+        }
+        jokeStorage_arr.push(newJoke)
+        console.log("Jokes stored:")
+        console.log(jokeStorage_arr)
+
+        // Set Local Storage
+        localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))
+      });
+}
+manateeAjax()
