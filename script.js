@@ -4,19 +4,16 @@ var jokeHere = $('#insert-joke')
 var jokeStorage_arr = [];
     /* Object Sample
     var newJoke = {
-        joke2Api: {
-            setup: null,
-            delivery: null,
-            joke: null,
-        }
+        joke: null,
+        punchline: null,
     }
     */
 var geekURL = "https://geek-jokes.sameerkumar.website/api?format=json";
 var NSFWCheck = "";
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
-
-
+var lastJoke_h5 = $('#history')
+var hasBeenClicked = false;
 
 /* Modal Scripts Start
 *
@@ -56,6 +53,18 @@ span.onclick = function() {
 // Add Event to Search Button
 searchButton.click(function () {
  
+    // Check if button has been clicked
+    if (hasBeenClicked){
+        console.log("this is the second click")
+        var jokeHistory_arr = JSON.parse(localStorage.getItem("Joke History"))
+        JSON.stringify(jokeHistory_arr)
+        lastJoke_h5.html(jokeHistory_arr[(jokeHistory_arr.length)-1].joke + " " + jokeHistory_arr[jokeHistory_arr.length-1].punchline)        
+    }
+    else {
+        console.log("this is the first click")
+    }
+
+
     // Condition: only if Joke2API is selected
    if ($("#joke3").is(":checked") || $("#joke4").is(":checked")) {
        
@@ -87,6 +96,16 @@ searchButton.click(function () {
     }
 
     // Need call for manatee function
+    if ($("#joke2").is(":checked")) {
+        manateeAjax();
+    }
+
+    // Update "hasBeenClicked" to true
+
+     if (!hasBeenClicked)
+        hasBeenClicked = true;                
+        return hasBeenClicked;   
+    
 
 })
 
@@ -107,10 +126,8 @@ function getJoke2Api (joke2api_url){
             
             // Push to jokeStorage_arr
             var newJoke = {
-                joke2Api: {
                     joke: response.joke,
-                    category: response.category,
-                }
+                    punchline: "",
             }
             jokeStorage_arr.push(newJoke)
             console.log("Jokes stored:")
@@ -131,11 +148,8 @@ function getJoke2Api (joke2api_url){
             
             // Push to jokeStorage_arr
             var newJoke = {
-                joke2Api: {
-                    setup: response.setup,
-                    delivery: response.delivery,
-                    category: response.category,
-                }
+                    joke: response.setup,
+                    punchline: response.delivery,
             }
             jokeStorage_arr.push(newJoke)
             console.log("Jokes stored:")
@@ -167,8 +181,6 @@ function geekAjax() {
             geekAjax();
             }
         else if (response.joke.toLowerCase().indexOf('norris') > -1) {
-            console.log("chuck norris joke!")
-            console.log(response.joke)
             geekAjax();
             }
         else {
@@ -176,7 +188,8 @@ function geekAjax() {
             console.log("not a chuck norris joke")
             console.log(response.joke)
             var newJoke = {
-                GeekJoke: response.joke
+                joke: response.joke,
+                punchline: "",
             }
             // Push to jokeStorage_arr
             jokeStorage_arr.push(newJoke)
@@ -210,10 +223,8 @@ function dadJokeAjax() {
         
         // Push to jokeStorage_arr
         var newJoke = {
-            dadJoke: {
                 joke: response.body.setup,
                 punchline: response.body.punchline,
-            }
         }
         jokeStorage_arr.push(newJoke)
         console.log("Jokes stored:")
@@ -246,10 +257,8 @@ function manateeAjax() {
 
         // Push to jokeStorage_arr
         var newJoke = {
-            manateeJoke: {
                 joke: response.setup,
                 punchline: response.punchline,
-            }
         }
         jokeStorage_arr.push(newJoke)
         console.log("Jokes stored:")
@@ -259,7 +268,6 @@ function manateeAjax() {
         localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))
       });
 }
-manateeAjax()
 
 
 

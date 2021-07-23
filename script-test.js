@@ -1,194 +1,171 @@
-// Each joke API is coded using fetch and AJAX methods within a function, to use a method with an API just uncomment the appropriate function.
-// Need to look at parameters to filter out NSFW jokes and, in the case of the geek API, chuck norris jokes.
-// Need to test calling a function based on user joke type selection.
-
-// is there a flag for race jokes?
-var randomURL = "https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,political"
-
-// Using fetch method:
-function randomFetch() {
-    fetch (randomURL, {
-        method: 'GET'
-    })
-    .then(function (response){
-        return response.json();
-    })
-    .then (function (data){
-        console.log(data);
-        var setup = document.getElementById('setup')
-        var delivery = document.getElementById('delivery')
-        setup.innerHTML = data.setup
-        delivery.innerHTML = data.delivery
-    })
-}
-// randomFetch();
-
-// Using AJAX method:
-function randomAjax() {
-    $.ajax({
-        url: randomURL,
-        method: 'GET',})
-    .then(function (response) {
-        var setup = $('#setup');
-        var delivery = $('#delivery');
-        setup.text(response.setup);
-        delivery.text(response.delivery);
-    })
-}
-// randomAjax();
-
-// --------------------------------------------------------------------------------------------------------------------------------------------
-// geek-jokes is full of Chuck Norris jokes also. Way to only show geek jokes?
+// Global Variables
+var searchButton = $('#search-btn')
+var jokeHere = $('#insert-joke')
+var jokeStorage_arr = [];
+    /* Object Sample
+    var newJoke = {
+        joke2Api: {
+            setup: null,
+            delivery: null,
+            joke: null,
+        }
+    }
+    */
 var geekURL = "https://geek-jokes.sameerkumar.website/api?format=json";
 
-// Using fetch method:
-function geekFetch() {
-    fetch (geekURL, {
+var NSFWCheck = "";
+
+
+
+// Add Event to Search Button
+searchButton.click(function () {
+ 
+    // Condition: only if Joke2API is selected
+   if ($("#joke3").is(":checked") || $("#joke4").is(":checked")) {
+
+    var testallinput = $('input')
+    console.log(testallinput)
+    // Grab user input from options and add to queryURL
+        var joke2api_url = "https://v2.jokeapi.dev/joke/"
+        
+        var selected_option_jokeCategory = $("input[name='category']:checked ").val();
+        console.log("Joke category selected is:")
+        console.log(selected_option_jokeCategory)
+        joke2api_url = joke2api_url + selected_option_jokeCategory
+        
+        // Check if NSFW
+        if (NSFWCheck == "no" || NSFWCheck == null || NSFWCheck == undefined) {
+            joke2api_url = joke2api_url + "?safe-mode"
+            console.log("this is safe for work")
+        }    
+        console.log("URL SUBMITTED CHECK")
+        console.log(joke2api_url)
+        // Get Joke Functions
+        getJoke2Api(joke2api_url);
+        console.log("joke2api loading")
+    }
+
+    // Condition: only if Geek Joke is selected
+    if ($("#joke5").is(":checked")) {
+        geekAjax();
+        console.log("geek joke loading")
+    }
+
+})
+
+// Get a joke from Joke2API
+function getJoke2Api (joke2api_url){
+    $.ajax ({
+        url: joke2api_url,
         method: 'GET'
     })
-    .then(function (response) {
-        return response.json();
-    })
-    .then (function (data) {
-        console.log(data);
-        var joke = document.getElementById('joke');
-        joke.innerHTML = data.joke;
+    .then (function (response){
+        // if single line joke
+        if (response.joke){
+            console.log(response);
+            console.log(response.joke)
+
+            // Add joke to page
+            jokeHere.html(response.joke)
+            
+            // Push to jokeStorage_arr
+            var newJoke = {
+                joke2Api: {
+                    joke: response.joke,
+                    category: response.category,
+                }
+            }
+            jokeStorage_arr.push(newJoke)
+            console.log("Jokes stored:")
+            console.log(jokeStorage_arr)
+            
+            // Set Local Storage
+            localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))            
+        }
+
+        // if two line joke
+        if (response.setup) {
+            console.log(response.setup);
+            console.log(response.delivery)
+            console.log(typeof response.setup)
+
+            // Add joke to page
+            jokeHere.html(response.setup + " " + response.delivery)
+            
+            // Push to jokeStorage_arr
+            var newJoke = {
+                joke2Api: {
+                    setup: response.setup,
+                    delivery: response.delivery,
+                    category: response.category,
+                }
+            }
+            jokeStorage_arr.push(newJoke)
+            console.log("Jokes stored:")
+            console.log(jokeStorage_arr)
+
+            // Set Local Storage
+            localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))            
+        }
+        
     })
 }
-// geekFetch();
 
-// Using AJAX method:
+// Get a joke from Geek-jokes
+
 function geekAjax() {
     $.ajax({
         url: geekURL,
-        method: 'GET',})
-    .then(function (response) {
-        var joke = $('#joke');
-        joke.html(response.joke);
-    })
-}
-// geekAjax();
-
-
-// --------------------------------------------------------------------------------------------------------------------------------------------
-// Some of these are NSFW. See about parameters
-var chuckNorrisURL = "https://api.chucknorris.io/jokes/random";
-
-// Using fetch method:
-function chuckNorrisFetch() {
-    fetch (chuckNorrisURL, {
-        method: 'GET'
-    })
-    .then(function (response) {
-        return response.json();
-    })
-    .then (function (data) {
-        console.log(data);
-        var joke = document.getElementById('joke');
-        joke.innerHTML = data.value;
-    })
-}
-// chuckNorrisFetch();
-
-// Using AJAX method:
-function chuckNorrisAjax() {
-    $.ajax({
-        url: chuckNorrisURL,
-        method: 'GET',})
-    .then(function (response) {
-        var joke = $('#joke');
-        joke.html(response.value);
-    });
-}
-// chuckNorrisAjax();
-
-// --------------------------------------------------------------------------------------------------------------------------------------------
-// Some of these are NSFW. See about parameters
-var dadJokeURL = "https://dad-jokes.p.rapidapi.com/random/joke/png";
-var dadJokeKey = "74f08a0113msha07df561725aea0p1786ebjsndfeb58ea0cc2"
-var dadJokeHost = "dad-jokes.p.rapidapi.com"
-
-// Using fetch method:
-function dadJokeFetch() {
-    fetch (dadJokeURL, {
         method: 'GET',
-        headers: {
-            "x-rapidapi-key": dadJokeKey,
-            "x-rapidapi-host": dadJokeHost,
+    })
+    .then(function (response) {
+        if (response.joke.toLowerCase().indexOf('chuck norris') > -1) {
+            console.log("chuck norris joke!")
+            console.log(response.joke)
+            geekAjax();
+            }
+        else {
+            jokeHere.html(response.joke);
+            console.log("not a chuck norris joke")
+            console.log(response.joke)
+            var newJoke = {
+                GeekJoke: response.joke
+            }
+            // Push to jokeStorage_arr
+            jokeStorage_arr.push(newJoke)
+
+            // Set Local Storage
+            localStorage.setItem("Joke History", JSON.stringify(jokeStorage_arr))
         }
     })
-    .then(function (response) {
-        return response.json();
-    })
-    .then (function (data) {
-        console.log(data);
-        var setup = document.getElementById('setup')
-        var delivery = document.getElementById('delivery')
-        setup.innerHTML = data.body.setup;
-        delivery.innerHTML = data.body.punchline;
-    })
 }
-// dadJokeFetch();
 
-// Using AJAX method:
-function dadJokeAjax() {
-    $.ajax({
-        url: "https://dad-jokes.p.rapidapi.com/random/joke/png",
-        method: 'GET',
-        headers: {
-            "x-rapidapi-key": dadJokeKey,
-		    "x-rapidapi-host": dadJokeHost,
-        }})
-    .then(function (response) {
-        var setup = $('#setup');
-        var delivery = $('#delivery');
-        setup.text(response.body.setup);
-        delivery.text(response.body.punchline);
-    });
+// Get the modal
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
 }
-// dadJokeAjax();
 
-// --------------------------------------------------------------------------------------------------------------------------------------------
-var manateeURL = "https://manatee-jokes.p.rapidapi.com/manatees/random/"
-var manateeKey = "74f08a0113msha07df561725aea0p1786ebjsndfeb58ea0cc2"
-var manateeHost = "manatee-jokes.p.rapidapi.com"
-
-// Using fetch method:
-// FETCH METHOD NOT WORKING WITH KEYS
-function manateeFetch() {
-    fetch (manateeURL, {
-        method: 'GET',
-        headers: {
-            "x-rapidapi-key": manateeKey,
-            "x-rapidapi-host": manateeHost,
-        }
-    })
-    .then(function (response) {
-        return response.json();
-    })
-    .then (function (data) {
-        console.log(data);
-        var setup = document.getElementById('setup')
-        var delivery = document.getElementById('delivery')
-        setup.innerHTML = data.setup;
-        delivery.innerHTML = data.punchline;
-    })
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
-// manateeFetch();
 
-// Using AJAX method:
-function manateeAjax() {
-    $.ajax({
-        url: "https://manatee-jokes.p.rapidapi.com/manatees/random/",
-        method: 'GET',
-        headers: {
-            "x-rapidapi-key": "74f08a0113msha07df561725aea0p1786ebjsndfeb58ea0cc2",
-              "x-rapidapi-host": "manatee-jokes.p.rapidapi.com",
-      }}).then(function (response) {
-        var setup = $('#setup');
-        var delivery = $('#delivery');
-        setup.text(response.setup);
-        delivery.text(response.punchline);
-      });
-}
-// manateeAjax();
+
+// Add Event to Modal Button
+$('#submitChoice').click(function(){
+    console.log("button works")
+    if ($("#yesNSFW").is(":checked")) {
+        NSFWCheck = "yes"
+    }
+    else {
+        NSFWCheck = "no"
+    }
+    modal.style.display = "none";
+console.log(NSFWCheck)
+})
