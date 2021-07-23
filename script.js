@@ -12,31 +12,77 @@ var jokeStorage_arr = [];
     }
     */
 var geekURL = "https://geek-jokes.sameerkumar.website/api?format=json";
+var NSFWCheck = "";
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+
+
+/* Modal Scripts Start
+*
+*
+*/
+
+// Add Event to Modal Button
+$('#submitChoice').click(function(){
+    console.log("button works")
+    if ($("#yesNSFW").is(":checked")) {
+        NSFWCheck = "yes"
+    }
+    else {
+        NSFWCheck = "no"
+    }
+    modal.style.display = "none";
+console.log(NSFWCheck)
+})
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+/* Modal Scripts End
+*
+*
+*/
 
 // Add Event to Search Button
 searchButton.click(function () {
  
     // Condition: only if Joke2API is selected
-   if ($("#joke3 input[type='radio']:checked") || $("#joke4 input[type='radio']:checked")) {
+   if ($("#joke3").is(":checked") || $("#joke4").is(":checked")) {
        
     // Grab user input from options and add to queryURL
         var joke2api_url = "https://v2.jokeapi.dev/joke/"
-        var selected_option_jokeCategory = $( "input[type=checkbox]:checked" ).val();
+        var selected_option_jokeCategory = $("input[name='category']:checked ").val();
         console.log("Joke category selected is:")
         console.log(selected_option_jokeCategory)
-        joke2api_url = joke2api_url + selected_option_jokeCategory + "?safe-mode"
+        joke2api_url = joke2api_url + selected_option_jokeCategory
+	   
+        // Check if NSFW
+        if (NSFWCheck == "no" || NSFWCheck == null || NSFWCheck == undefined) {
+            joke2api_url = joke2api_url + "?safe-mode"
+            console.log("this is safe for work")
+        }
 
         // Get Joke Functions
         getJoke2Api(joke2api_url);
     }
 
     // Condition: only if Geek Joke is selected
-    if ($("#joke5 input[type='radio']:checked")) {
+    if ($("#joke5").is(":checked")) {
         geekAjax();
     }
 
     // Condition: only if Dad Joke is selected
-    if ($("#joke1 input[type='radio']:checked")) {
+    if ($("#joke1").is(":checked")) {
         dadJokeAjax();
     }
 
@@ -214,3 +260,6 @@ function manateeAjax() {
       });
 }
 manateeAjax()
+
+
+
