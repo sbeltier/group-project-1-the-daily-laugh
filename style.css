@@ -1,115 +1,85 @@
 
 
 * {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
 
 #header { /*main heading*/
-    background-color: #7F58AF;
-    color: white;
-    text-align: center;
-    font-size: 50px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+  font-family: "Monaco", monospace;
+  text-align: center;
+  font-size: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 #column1 { /*LEFT BOX CONTAINING search button, search history, and check boxes for joke criteria/genre*/
-    float: left;  
-    width: 25%;
-    padding: 10px;
-    height: 550px;
-    margin: 25px;
-    border: 2px solid #000000;
-  }
+  float: left;  
+  width: 25%;
+  padding: 10px;
+  height: 550px;
+  margin: 25px;
+  border: 2px solid #000000;
+}
 
   #search-btn { /*changes the appearance of the button*/
-    background-color: #00008B;
-    color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 145px;
-    padding-right: 145px;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ff8c00;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 145px;
+  padding-right: 145px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 #history { /*search history box*/
-    color: #808080;
-    text-align: center;
-    border: 2px solid #DCDCDC;
-    margin: 10px;
-    height: 125px;
-    border-radius: 5px;
+  color: #808080;
+  text-align: center;
+  border: 2px solid #DCDCDC;
+  margin: 10px;
+  height: 125px;
+  border-radius: 5px;
 
 }
 
 #subheading { /*SUBHEADING INSIDE search history box*/
-    margin: 25px;
-    font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 25px;
+  font-weight: bold;
 }
 
 #checkboxes { /*contains ALL checkboxes*/
-    margin: 25px;
+  margin: 25px;
     
 }
 
-#joke1, #joke2, #joke3, #joke4, #joke5 { /*INDIVIDUAL checkboxes*/
-    margin: 15px;
+#joke1, #joke2, #joke3, #joke4, #joke5, #joke6 { /*INDIVIDUAL checkboxes*/
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 15px;
 }
 
-#column2 { /*RIGHT BOX CONTAINING joke image and joke | will change to tailwind framework*/
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOW2aJpGuWW8nPlxO9dpwm9zVDPClAGXVTtA&usqp=CAU");
-    float: right;
-    width: 65%;
-    height: 550px;
-    padding: 10px;
-    margin-right: 25px;
-    margin-top: 25px;
-    border: 2px solid #000000;
-  }
+#column2 { /*RIGHT BOX CONTAINING joke image and joke*/
+  float: right;
+  height: 550px;
+  margin-right: 25px;
+  margin-top: 25px;
+}
 
-  #insert-joke { /*box where actual joke will be displayed | will change to tailwind framework*/
-    margin: 250px;
-    height: 50px;
-    text-align: center;
-  }
+#imageToDisplay {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#insert-joke { /*box where actual joke will be displayed | will change to tailwind framework*/
+  font-family: Arial, Helvetica, sans-serif;
+  width: 700px;
+  height: 100px;
+  position: absolute;
+  top: 75%;
+  left: 1000px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
   
- /* The Modal (background) */
-.modal {
-    display: block; 
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
