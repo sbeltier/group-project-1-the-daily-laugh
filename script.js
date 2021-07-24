@@ -270,4 +270,22 @@ function manateeAjax() {
 }
 
 
+var requestUrl =
+"https://api.unsplash.com/search/photos?query=funny&client_id=9pKdm2wau0n_B0J1g4z4yTHfOCJY9lLUft4x21--LD8";
+var getImagesButton = document.querySelector('#search-btn');
+var imageToDisplay = document.querySelector('.imageToDisplay');
 
+getImagesButton.addEventListener('click', async () => {
+let randomImage = await getNewImage();
+imageToDisplay.src = randomImage;
+});
+
+async function getNewImage() {
+let randomNumber = Math.floor(Math.random() * 10);
+return fetch(requestUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    let allImages = data.results[randomNumber];
+    return allImages.urls.regular;
+  });
+}
