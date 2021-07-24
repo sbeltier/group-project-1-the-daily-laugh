@@ -52,8 +52,8 @@ span.onclick = function() {
 
 // Add Event to Search Button
 searchButton.click(function () {
-
-    // Check that user selected an option
+	
+    // Confirm that user selected a category
     if ($("input[name='category']").is(':checked')){
         console.log("not working")
         if ($('.hide')[0]){
@@ -61,6 +61,9 @@ searchButton.click(function () {
         else {
             $('#alert').addClass('hide')
         }
+	    
+        // Play I_Dudditz
+        playDudditz();
  
         // Check if button has been clicked
         if (hasBeenClicked){
@@ -303,4 +306,11 @@ return fetch(requestUrl)
     let allImages = data.results[randomNumber];
     return allImages.urls.regular;
   });
+}
+
+// Function: when user submits button, I_Dudditz plays
+function playDudditz () {
+    var dudditzMP3 = '<source src="./assets/Dudditz_2.mp3" type="audio/mpeg">';
+    searchButton.html('<audio autoplay="autoplay">' + dudditzMP3 + '</audio>' + "Dudditz")
+
 }
