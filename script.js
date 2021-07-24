@@ -311,6 +311,6 @@ return fetch(requestUrl)
 // Function: when user submits button, I_Dudditz plays
 function playDudditz () {
     var dudditzMP3 = '<source src="./assets/Dudditz_2.mp3" type="audio/mpeg">';
-    searchButton.html('<audio autoplay="autoplay">' + dudditzMP3 + '</audio>' + "Dudditz")
+    searchButton.html('<audio autoplay="autoplay">' + dudditzMP3 + '</audio>' + "Dudditz!")
 
 }
