@@ -1,5 +1,5 @@
 # group-project-1-the-daily-laugh
-DESCRIPTION: inspired by the awesomness of our instructor Lee, The DailyLee Laugh is a webpage built for users looking for a good laugh. 
+DESCRIPTION: inspired by the awesomness of instructor Lee, The DailyLee Laugh is a webpage built for users looking for a good laugh. 
 
 USAGE: users can select whether or not to omit jokes not safe work (NSFW). Users must select what joke category they would like to hear from and click the 'Dudditz' button to generate a joke and a random image. As new jokes are generated, the previous joke generated is under the history box.
 
