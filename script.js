@@ -52,60 +52,75 @@ span.onclick = function() {
 
 // Add Event to Search Button
 searchButton.click(function () {
+
+    // Check that user selected an option
+    if ($("input[name='category']").is(':checked')){
+        console.log("not working")
+        if ($('.hide')[0]){
+        }
+        else {
+            $('#alert').addClass('hide')
+        }
  
-    // Check if button has been clicked
-    if (hasBeenClicked){
-        console.log("this is the second click")
-        var jokeHistory_arr = JSON.parse(localStorage.getItem("Joke History"))
-        JSON.stringify(jokeHistory_arr)
-        lastJoke_h5.html(jokeHistory_arr[(jokeHistory_arr.length)-1].joke + " " + jokeHistory_arr[jokeHistory_arr.length-1].punchline)        
-    }
-    else {
-        console.log("this is the first click")
-    }
-
-
-    // Condition: only if Joke2API is selected
-   if ($("#joke3").is(":checked") || $("#joke4").is(":checked")) {
-       
-    // Grab user input from options and add to queryURL
-        var joke2api_url = "https://v2.jokeapi.dev/joke/"
-        var selected_option_jokeCategory = $("input[name='category']:checked ").val();
-        console.log("Joke category selected is:")
-        console.log(selected_option_jokeCategory)
-        joke2api_url = joke2api_url + selected_option_jokeCategory
-	   
-        // Check if NSFW
-        if (NSFWCheck == "no" || NSFWCheck == null || NSFWCheck == undefined) {
-            joke2api_url = joke2api_url + "?safe-mode"
-            console.log("this is safe for work")
+        // Check if button has been clicked
+        if (hasBeenClicked){
+            console.log("this is the second click")
+            var jokeHistory_arr = JSON.parse(localStorage.getItem("Joke History"))
+            JSON.stringify(jokeHistory_arr)
+            lastJoke_h5.html(jokeHistory_arr[(jokeHistory_arr.length)-1].joke + " " + jokeHistory_arr[jokeHistory_arr.length-1].punchline)        
+        }
+        else {
+            console.log("this is the first click")
         }
 
-        // Get Joke Functions
-        getJoke2Api(joke2api_url);
+
+        // Condition: only if Joke2API is selected
+        if ($("#joke3").is(":checked") || $("#joke4").is(":checked")) {
+        
+        // Grab user input from options and add to queryURL
+            var joke2api_url = "https://v2.jokeapi.dev/joke/"
+            var selected_option_jokeCategory = $("input[name='category']:checked ").val();
+            console.log("Joke category selected is:")
+            console.log(selected_option_jokeCategory)
+            joke2api_url = joke2api_url + selected_option_jokeCategory
+        
+            // Check if NSFW
+            if (NSFWCheck == "no" || NSFWCheck == null || NSFWCheck == undefined) {
+                joke2api_url = joke2api_url + "?safe-mode"
+                console.log("this is safe for work")
+            }
+
+            // Get Joke Functions
+            getJoke2Api(joke2api_url);
+        }
+
+        // Condition: only if Geek Joke is selected
+        if ($("#joke5").is(":checked")) {
+            geekAjax();
+        }
+
+        // Condition: only if Dad Joke is selected
+        if ($("#joke1").is(":checked")) {
+            dadJokeAjax();
+        }
+
+        // Need call for manatee function
+        if ($("#joke2").is(":checked")) {
+            manateeAjax();
+        }
+
+        // Update "hasBeenClicked" to true
+
+        if (!hasBeenClicked)
+            hasBeenClicked = true;                
+            return hasBeenClicked;   
     }
 
-    // Condition: only if Geek Joke is selected
-    if ($("#joke5").is(":checked")) {
-        geekAjax();
+    // If the user clicked search and did not select an option:
+    else {
+        $('#alert').removeClass('hide')
+
     }
-
-    // Condition: only if Dad Joke is selected
-    if ($("#joke1").is(":checked")) {
-        dadJokeAjax();
-    }
-
-    // Need call for manatee function
-    if ($("#joke2").is(":checked")) {
-        manateeAjax();
-    }
-
-    // Update "hasBeenClicked" to true
-
-     if (!hasBeenClicked)
-        hasBeenClicked = true;                
-        return hasBeenClicked;   
-    
 
 })
 

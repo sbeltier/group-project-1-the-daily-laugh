@@ -25,13 +25,24 @@
         <label for="yes">Yes</label><br>
         <input type="radio" id="noNSFW" name="yesno" value="no">
         <label for="no">No</label><br>
-        <button type="submit" id="submitChoice">Submit</button>
+        <button class="inline-block px-5 py-3 my-3 font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white" type="submit" id="submitChoice">Submit</button>
   </div>
 </div>
+
+
+
 
 <div>
   <!--contains everything inside left side box (button, history, checkboxes)-->
   <div id="column1" class="bg-white border rounded-md">
+    <!-- if no select -->
+    <div role="alert" id="alert" class="flex items-center p-4 text-red-600 border border-l-4 border-current hide">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="flex-shrink-0 w-6 h-6">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+      </svg>
+      <h4>Select a category</h4>
+
+    </div>
     <!--button-->
     <button type="submit" id="search-btn">Search</button>
     <div>
