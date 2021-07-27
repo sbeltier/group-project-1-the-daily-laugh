@@ -2,7 +2,7 @@
   margin: 0;
 }
 
-#header { /*main heading*/
+#header { /* Main heading. */
   font-family: "Monaco", monospace;
   text-align: center;
   font-size: 50px;
@@ -10,7 +10,7 @@
   padding-bottom: 15px;
 }
 
-#column1 { /*LEFT BOX CONTAINING search button, search history, and check boxes for joke criteria/genre*/
+#column1 { /* Left box containing search button, search history, and radio buttons for joke criteria/genre. */
   float: left;  
   width: 25%;
   padding: 10px;
@@ -19,7 +19,7 @@
   border: 2px solid #000000;
 }
 
-  #search-btn { /*changes the appearance of the button*/
+  #search-btn { /* Changes the appearance of the button. */
   font-family: Arial, Helvetica, sans-serif;
   background-color: #ff8c00;
   color: white;
@@ -32,7 +32,7 @@
   margin-left: 10px;
 }
 
-#history { /*search history box*/
+#history { /* Search history box. */
   color: #808080;
   text-align: center;
   border: 2px solid #DCDCDC;
@@ -42,23 +42,23 @@
 
 }
 
-#subheading { /*SUBHEADING INSIDE search history box*/
+#subheading { /* Subheading inside the search history box. */
   font-family: Arial, Helvetica, sans-serif;
   margin: 25px;
   font-weight: bold;
 }
 
-#checkboxes { /*contains ALL checkboxes*/
+#radiobuttons { /* Contains ALL radio buttons. */
   margin: 25px;
     
 }
 
-#joke1, #joke2, #joke3, #joke4, #joke5, #joke6 { /*INDIVIDUAL checkboxes*/
+#joke1, #joke2, #joke3, #joke4, #joke5, #joke6 { /* INDIVIDUAL radio buttons. */
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
 }
 
-#column2 { /*RIGHT BOX CONTAINING joke image and joke*/
+#column2 { /* Right box containing the image and joke. */
   /* float: right; */
   display: inline-flex;
   height: 350px;
@@ -73,7 +73,7 @@
   object-fit: cover;
 }
 
-#insert-joke { /*box where actual joke will be displayed | will change to tailwind framework*/
+#insert-joke { /* Box where actual joke will be displayed. */
   font-family: Arial, Helvetica, sans-serif;
   position: absolute;
   width: 700px;
@@ -84,44 +84,44 @@
   text-align: center;
 }
   
-/* The Modal (background) */
+/* The modal (background). */
 .modal {
-    display: block; 
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+  display: block; 
+  position: fixed; /* Stay in place. */
+  z-index: 1; /* Sit on top. */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width. */
+  height: 100%; /* Full height. */
+  overflow: auto; /* Enable scroll if needed. */
+  background-color: rgb(0,0,0); /* Fallback color. */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity. */
+}
   
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+/* Modal content/box. */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered. */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size. */
+}
 
-  .hide {
-    display: none;
-  }
+/* The close button. */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
