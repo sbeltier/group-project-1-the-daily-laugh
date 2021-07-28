@@ -192,7 +192,7 @@ searchButton.click(function() {
         }
 	    
         // Play I_Dudditz.
-        var dudditzMP3 = '<source src="./assets/Dudditz_2.mp3" type="audio/mpeg">';
+        var dudditzMP3 = '<source src="./assets/audio/Dudditz_2.mp3" type="audio/mpeg">';
         searchButton.html('<audio autoplay="autoplay">' + dudditzMP3 + '</audio>' + "Dudditz!")
  
         // Check if button has been clicked.
@@ -255,7 +255,6 @@ async function getNewImage() {
     return fetch(unsplashURL)
       .then((response) => response.json())
       .then((data) => {
-          console.log(data)
         let allImages = data.results[randomNumber];
         return allImages.urls.regular;
     });
@@ -265,4 +264,5 @@ async function getNewImage() {
 searchButton.click(async () => {
     let randomImage = await getNewImage();
     imageToDisplay.attr('src', randomImage);
+    imageToDisplay.addClass('border')
 });
