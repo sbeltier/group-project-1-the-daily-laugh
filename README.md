@@ -1,5 +1,8 @@
 # group-project-1-the-daily-laugh
 
+![theDayLeeLaugh](https://user-images.githubusercontent.com/43533765/127256115-c04614d4-d4c7-4cf3-98af-fedfd73c8b13.png)
+
+
 ## DESCRIPTION:
 
 Inspired by the awesomness of instructor Lee, The DailyLee Laugh is a webpage built for users looking for a good laugh. 
